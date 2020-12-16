@@ -7,14 +7,20 @@ const chainMaker = {
   },
   addLink(value) {
     this.arr.push(`( ${value} )`);
+    return this;
   },
   removeLink(position) {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    if (typeof(position) === 'number' && Number.isInteger(position) && position >= 0 && position < this.arr.length) {
+      this.arr.splice(position - 1, 1);
+      return this;
+    } else {
+      this.arr = [];
+      throw Error;
+    }
   },
   reverseChain() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
+    this.arr.reverse();
+    return this;
   },
   finishChain() {
     let result = this.arr.join('~~');
